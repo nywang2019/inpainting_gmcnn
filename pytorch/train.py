@@ -14,7 +14,7 @@ print('loading data..')
 dataset = InpaintingDataset(config.dataset_path, '', transform=transforms.Compose([
     ToTensor()
 ]))
-dataloader = DataLoader(dataset, batch_size=config.batch_size, shuffle=True, num_workers=4, drop_last=True)
+dataloader = DataLoader(dataset, batch_size=config.batch_size, shuffle=True, num_workers=0, drop_last=True)
 print('data loaded..')
 
 print('configuring model..')

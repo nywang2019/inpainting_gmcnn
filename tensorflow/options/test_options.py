@@ -10,9 +10,9 @@ class TestOptions:
     def initialize(self):
         self.parser.add_argument('--dataset', type=str, default='paris_streetview',
                                  help='The dataset of the experiment.')
-        self.parser.add_argument('--data_file', type=str, default='./imgs/paris-streetview_256x256', help='the file storing testing file paths')
+        self.parser.add_argument('--data_file', type=str, default='./imgs/places2-512x680', help='the file storing testing file paths')
         self.parser.add_argument('--test_dir', type=str, default='./test_results', help='models are saved here')
-        self.parser.add_argument('--load_model_dir', type=str, default='./checkpoints', help='pretrained models are given here')
+        self.parser.add_argument('--load_model_dir', type=str, default='./checkpoints/places2_512x680_freeform', help='pretrained models are given here')
         self.parser.add_argument('--model_prefix', type=str, default='snap')
         self.parser.add_argument('--seed', type=int, default=1, help='random seed')
 

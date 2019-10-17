@@ -257,7 +257,7 @@ class InpaintingModel_GMCNN(BaseModel):
             if self.opt.mask_type == 'rect':
                 self.netD = GlobalLocalDiscriminator(3, cnum=opt.d_cnum, act=act,
                                                      g_fc_channels=16 * 16 * opt.d_cnum * 4,
-                                                     l_fc_channels=8 * 8 * opt.d_cnum * 4,
+                                                     l_fc_channels=4 * 4 * opt.d_cnum * 4,
                                                      spectral_norm=self.opt.spectral_norm).cuda()
             else:
                 self.netD = GlobalLocalDiscriminator(3, cnum=opt.d_cnum, act=act,
