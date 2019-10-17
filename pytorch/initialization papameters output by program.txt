@@ -1,0 +1,153 @@
+------------ Options -------------
+D_max_iters: 5
+batch_size: 4
+checkpoint_dir: ./checkpoints
+d_cnum: 64
+data_file: ./training_data_list/data_list.txt
+dataset: Thanka
+dataset_path: ./training_data_list/data_list.txt
+date_str: 20191009-202638
+epochs: 10
+g_cnum: 32
+gpu_ids: ['0']
+img_shapes: [256, 256, 3]
+lambda_adv: 0.001
+lambda_ae: 1.2
+lambda_gp: 10
+lambda_mrf: 0.05
+lambda_rec: 1.4
+load_model_dir:
+lr: 1e-05
+margins: [0, 0]
+mask_shapes: [64, 64]
+mask_type: rect
+max_delta_shapes: [32, 32]
+model_folder: ./checkpoints\20191009-202638_GMCNN_Thanka_b4_s256x256_gc32_dc64_randmask-rect_pretrain
+model_name: GMCNN
+padding: SAME
+phase: train
+pretrain_network: True
+random_crop: True
+random_mask: True
+random_seed: False
+spectral_norm: True
+train_spe: 100
+vgg19_path: vgg19_weights/imagenet-vgg-verydeep-19.mat
+viz_steps: 5
+-------------- End ----------------
+loading data..
+data loaded..
+configuring model..
+initialize network with normal
+---------- Networks initialized -------------
+GMCNN(
+  (EB1): ModuleList(
+    (0): Conv2d(4, 32, kernel_size=(7, 7), stride=(1, 1))
+    (1): Conv2d(32, 64, kernel_size=(7, 7), stride=(2, 2))
+    (2): Conv2d(64, 64, kernel_size=(7, 7), stride=(1, 1))
+    (3): Conv2d(64, 128, kernel_size=(7, 7), stride=(2, 2))
+    (4): Conv2d(128, 128, kernel_size=(7, 7), stride=(1, 1))
+    (5): Conv2d(128, 128, kernel_size=(7, 7), stride=(1, 1))
+    (6): Conv2d(128, 128, kernel_size=(7, 7), stride=(1, 1), dilation=(2, 2))
+    (7): Conv2d(128, 128, kernel_size=(7, 7), stride=(1, 1), dilation=(4, 4))
+    (8): Conv2d(128, 128, kernel_size=(7, 7), stride=(1, 1), dilation=(8, 8))
+    (9): Conv2d(128, 128, kernel_size=(7, 7), stride=(1, 1), dilation=(16, 16))
+    (10): Conv2d(128, 128, kernel_size=(7, 7), stride=(1, 1))
+    (11): Conv2d(128, 128, kernel_size=(7, 7), stride=(1, 1))
+    (12): PureUpsampling()
+  )
+  (EB2): ModuleList(
+    (0): Conv2d(4, 32, kernel_size=(5, 5), stride=(1, 1))
+    (1): Conv2d(32, 64, kernel_size=(5, 5), stride=(2, 2))
+    (2): Conv2d(64, 64, kernel_size=(5, 5), stride=(1, 1))
+    (3): Conv2d(64, 128, kernel_size=(5, 5), stride=(2, 2))
+    (4): Conv2d(128, 128, kernel_size=(5, 5), stride=(1, 1))
+    (5): Conv2d(128, 128, kernel_size=(5, 5), stride=(1, 1))
+    (6): Conv2d(128, 128, kernel_size=(5, 5), stride=(1, 1), dilation=(2, 2))
+    (7): Conv2d(128, 128, kernel_size=(5, 5), stride=(1, 1), dilation=(4, 4))
+    (8): Conv2d(128, 128, kernel_size=(5, 5), stride=(1, 1), dilation=(8, 8))
+    (9): Conv2d(128, 128, kernel_size=(5, 5), stride=(1, 1), dilation=(16, 16))
+    (10): Conv2d(128, 128, kernel_size=(5, 5), stride=(1, 1))
+    (11): Conv2d(128, 128, kernel_size=(5, 5), stride=(1, 1))
+    (12): PureUpsampling()
+    (13): Conv2d(128, 64, kernel_size=(5, 5), stride=(1, 1))
+    (14): Conv2d(64, 64, kernel_size=(5, 5), stride=(1, 1))
+    (15): PureUpsampling()
+  )
+  (EB3): ModuleList(
+    (0): Conv2d(4, 32, kernel_size=(3, 3), stride=(1, 1))
+    (1): Conv2d(32, 64, kernel_size=(3, 3), stride=(2, 2))
+    (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1))
+    (3): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2))
+    (4): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1))
+    (5): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1))
+    (6): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), dilation=(2, 2))
+    (7): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), dilation=(4, 4))
+    (8): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), dilation=(8, 8))
+    (9): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), dilation=(16, 16))
+    (10): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1))
+    (11): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1))
+    (12): PureUpsampling()
+    (13): Conv2d(128, 64, kernel_size=(3, 3), stride=(1, 1))
+    (14): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1))
+    (15): PureUpsampling()
+    (16): Conv2d(64, 32, kernel_size=(3, 3), stride=(1, 1))
+    (17): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1))
+  )
+  (decoding_layers): ModuleList(
+    (0): Conv2d(224, 16, kernel_size=(3, 3), stride=(1, 1))
+    (1): Conv2d(16, 3, kernel_size=(3, 3), stride=(1, 1))
+  )
+  (pads): ModuleList(
+    (0): ReflectionPad2d((0, 0, 0, 0))
+    (1): ReflectionPad2d((1, 1, 1, 1))
+    (2): ReflectionPad2d((2, 2, 2, 2))
+    (3): ReflectionPad2d((3, 3, 3, 3))
+    (4): ReflectionPad2d((4, 4, 4, 4))
+    (5): ReflectionPad2d((5, 5, 5, 5))
+    (6): ReflectionPad2d((6, 6, 6, 6))
+    (7): ReflectionPad2d((7, 7, 7, 7))
+    (8): ReflectionPad2d((8, 8, 8, 8))
+    (9): ReflectionPad2d((9, 9, 9, 9))
+    (10): ReflectionPad2d((10, 10, 10, 10))
+    (11): ReflectionPad2d((11, 11, 11, 11))
+    (12): ReflectionPad2d((12, 12, 12, 12))
+    (13): ReflectionPad2d((13, 13, 13, 13))
+    (14): ReflectionPad2d((14, 14, 14, 14))
+    (15): ReflectionPad2d((15, 15, 15, 15))
+    (16): ReflectionPad2d((16, 16, 16, 16))
+    (17): ReflectionPad2d((17, 17, 17, 17))
+    (18): ReflectionPad2d((18, 18, 18, 18))
+    (19): ReflectionPad2d((19, 19, 19, 19))
+    (20): ReflectionPad2d((20, 20, 20, 20))
+    (21): ReflectionPad2d((21, 21, 21, 21))
+    (22): ReflectionPad2d((22, 22, 22, 22))
+    (23): ReflectionPad2d((23, 23, 23, 23))
+    (24): ReflectionPad2d((24, 24, 24, 24))
+    (25): ReflectionPad2d((25, 25, 25, 25))
+    (26): ReflectionPad2d((26, 26, 26, 26))
+    (27): ReflectionPad2d((27, 27, 27, 27))
+    (28): ReflectionPad2d((28, 28, 28, 28))
+    (29): ReflectionPad2d((29, 29, 29, 29))
+    (30): ReflectionPad2d((30, 30, 30, 30))
+    (31): ReflectionPad2d((31, 31, 31, 31))
+    (32): ReflectionPad2d((32, 32, 32, 32))
+    (33): ReflectionPad2d((33, 33, 33, 33))
+    (34): ReflectionPad2d((34, 34, 34, 34))
+    (35): ReflectionPad2d((35, 35, 35, 35))
+    (36): ReflectionPad2d((36, 36, 36, 36))
+    (37): ReflectionPad2d((37, 37, 37, 37))
+    (38): ReflectionPad2d((38, 38, 38, 38))
+    (39): ReflectionPad2d((39, 39, 39, 39))
+    (40): ReflectionPad2d((40, 40, 40, 40))
+    (41): ReflectionPad2d((41, 41, 41, 41))
+    (42): ReflectionPad2d((42, 42, 42, 42))
+    (43): ReflectionPad2d((43, 43, 43, 43))
+    (44): ReflectionPad2d((44, 44, 44, 44))
+    (45): ReflectionPad2d((45, 45, 45, 45))
+    (46): ReflectionPad2d((46, 46, 46, 46))
+    (47): ReflectionPad2d((47, 47, 47, 47))
+    (48): ReflectionPad2d((48, 48, 48, 48))
+  )
+)
+[Network GM] Total number of parameters : 12.562 M
