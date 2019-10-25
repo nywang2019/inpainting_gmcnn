@@ -15,7 +15,6 @@ class TestOptions:
         self.parser.add_argument('--load_model_dir', type=str, default='./checkpoints/places2_512x680_freeform', help='pretrained models are given here')
         self.parser.add_argument('--model_prefix', type=str, default='snap')
         self.parser.add_argument('--seed', type=int, default=1, help='random seed')
-
         self.parser.add_argument('--model', type=str, default='gmcnn')
         self.parser.add_argument('--random_mask', type=int, default=0,
                                  help='using random mask')

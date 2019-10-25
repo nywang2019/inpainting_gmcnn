@@ -7,9 +7,9 @@ from options.test_options import TestOptions
 from model.net import InpaintingModel_GMCNN
 from util.utils import generate_rect_mask, generate_stroke_mask, getLatest
 
-os.environ['CUDA_VISIBLE_DEVICES']=str(np.argmax([int(x.split()[2]) for x in subprocess.Popen(
-        "nvidia-smi -q -d Memory | grep -A4 GPU | grep Free", shell=True, stdout=subprocess.PIPE).stdout.readlines()]
-        ))
+# os.environ['CUDA_VISIBLE_DEVICES']=str(np.argmax([int(x.split()[2]) for x in subprocess.Popen(
+# #         "nvidia-smi -q -d Memory | grep -A4 GPU | grep Free", shell=True, stdout=subprocess.PIPE).stdout.readlines()]
+# #         ))
 
 config = TestOptions().parse()
 

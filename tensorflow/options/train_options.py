@@ -10,6 +10,7 @@ class TrainOptions:
             'celebahq': '',
             'celeba': '',
             'places2': '',
+            'Thanka': '',
             'imagenet': '',
             'paris_streetview': '',
             'places2full': '',
@@ -39,13 +40,14 @@ class TrainOptions:
         self.parser.add_argument('--random_seed', type=bool, default=False)
         self.parser.add_argument('--lr', type=float, default=1e-5, help='learning rate for training')
 
-        self.parser.add_argument('--train_spe', type=int, default=1000)
+        #wny self.parser.add_argument('--train_spe', type=int, default=1000)
+        self.parser.add_argument('--train_spe', type=int, default=50)
         self.parser.add_argument('--max_iters', type=int, default=40000)
         self.parser.add_argument('--viz_steps', type=int, default=5)
 
         self.parser.add_argument('--img_shapes', type=str, default='256,256,3',
                                  help='given shape parameters: h,w,c or h,w')
-        self.parser.add_argument('--mask_shapes', type=str, default='128,128',
+        self.parser.add_argument('--mask_shapes', type=str, default='64,64',
                                  help='given mask parameters: h,w')
         self.parser.add_argument('--max_delta_shapes', type=str, default='32,32')
         self.parser.add_argument('--margins', type=str, default='0,0')
